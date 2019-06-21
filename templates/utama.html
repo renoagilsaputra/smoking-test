@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block menu %}Utama{%endblock%}
+{% block content %}
+    <div class="text-center">
+            {{ result }}
+            <h1>Pilih Bagian Tubuh yang sakit</h1>
+            <div class="kepala">
+                    <a href="{{ url_for('kepala') }}" target="_blank">
+                        <img title="Kepala" src="{{ url_for('static', filename='img/kepala.png') }}" alt="kepala">
+                    </a>
+                </div>
+                <div class="tengorokan">
+                    <a href="{{ url_for('tenggorokan') }}" target="_blank">
+                        <img title="Tenggorokan" src="{{  url_for('static', filename='img/tenggorokan.png') }}" alt="tenggorokan">
+                    </a>
+                </div>
+                <div class="dada">
+                    <a href="{{ url_for('dada') }}" target="_blank">
+                        <img title="Dada" src="{{  url_for('static', filename='img/dada.png') }}" alt="dada">
+                    </a>
+                </div>
+                <div class="perut">
+                    <a href="{{ url_for('perut') }}" target="_blank">
+                        <img title="Perut" src="{{  url_for('static', filename='img/perut.png') }}" alt="perut">
+                    </a>
+                </div>
+                <div class="kemaluan">
+                    <a href="{{ url_for('kemaluan') }}" target="_blank">
+                        <img title="Kemaluan" src="{{  url_for('static', filename='img/kemaluan.png') }}" alt="kemaluan">
+                    </a>
+                </div>
+    </div>
+{% endblock %}

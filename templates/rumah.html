@@ -1,0 +1,65 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Rumah</title>
+    </head>
+    <body>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <form action="{{ url_for('simpan') }}" method="post">
+            <table>
+                <tr>
+                    <th>Nama</th>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="nama" placeholder="Nama">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Kelas</th>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="kelas" placeholder="Kelas">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>:</td>
+                    <td>
+                        <input type="text" name="alamat" placeholder="Alamat">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="submit" value="Simpan">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <table border="1px"> 
+            <tr> 
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Alamat</th>
+                <th>#</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.0 }}</td>
+                <td>{{ row.1 }}</td>
+                <td>{{ row.2 }}</td>
+                <td>{{ row.3 }}</td>
+                <td>
+                    <a href="/hapus/{{ row.0 }}">Hapus</a>
+                    <a href="/edit/{{ row.0 }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+    </html>

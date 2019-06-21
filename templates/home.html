@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diagnosa Penyakit</title>
+   
+</head>
+<body>
+
+    <h1>Diagnosa Penyakit</h1>
+    <form action="http://127.0.0.1:5000/hasil" method="POST">
+        <h1>Pertanyaan</h1>
+        
+        {% for i in range(0,22): %}
+            <p>{{ result[i] }}</p>
+            <input type="checkbox" name="gejala{{ i }}" value="1">Iya
+            <input type="checkbox" name="gejala{{ i }}" value="0">Tidak     
+
+        {% endfor %}
+        <br><br>
+        <input type="submit" value="Kirim">
+    </form>
+</body>
+</html>

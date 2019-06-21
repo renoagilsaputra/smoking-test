@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="{{ url_for('record') }}" method="post">
+    <input type="hidden" name="anatomy" value="tenggorokan">
+    <input type="hidden" name="hasil" value="{% for k in result.items() %}{{ k[0] }}={{ k[1] }}&nbsp;{% endfor %}">
+    <input type="hidden" name="diagnosa"
+        value="{% for l in result.items(): %}{% if l[1] > 50 %}{{ l[0] }}&nbsp;{% endif %}{% endfor %}">
+    <input type="hidden" name="solusi"
+        value="{% for j in result.items(): %}{% if j[1] > 50 %}{% if j[0] == 'Kanker Tenggorokan' %}Taruh Es diatas Leher untuk pencegahan pendarahan, Hirup wewangian aromatrapi, Konsumsi makanan hangat.{% endif %}{% endif %}{% endfor %}">
+
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <h1>Hasil</h1>
+                    {% for i in result.items() %}
+                    <h4 class="small font-weight-bold">{{ i[0] }} <span class="float-right">{{ i[1] }}%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ i[1] }}%"
+                            aria-valuenow="{{ i[1] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <h1>Diagnosa</h1>
+                    <ul class="list-group">
+                        {% for j in result.items(): %}
+                        {% if j[1] > 50 %}
+                        <li class="list-group-item list-group-item-action">{{ j[0] }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <h1>Solusi</h1>
+
+                    {% for j in result.items(): %}
+                    {% if j[1] > 50 %}
+                    {% if j[0] == 'Kanker Tenggorokan' %}
+                    <p>Taruh Es diatas Leher untuk pencegahan pendarahan, Hirup wewangian aromatrapi, Konsumsi makanan
+                        hangat.</p>
+                    {% endif %}
+
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+
+            <button type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Simpan</button>
+        </div>
+        <div class="col"></div>
+    </div>
+</form>
+{% endblock %}

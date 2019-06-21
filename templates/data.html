@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}| Data Pemeriksaan {% endblock %}
+{% block menu %}Data Pemeriksaan{%endblock%}
+{% block content %}
+<a onclick="return confirm('Yakin?')" class="btn btn-outline-danger mb-2" href="{{ url_for('reset') }}"><i class="fas fa-times"></i> Reset</a>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+
+           
+            <th>Anatomy</th>
+            <th>Hasil</th>
+            <th>Diagnosa</th>
+            <th>Solusi</th>
+            <th>Waktu</th>
+            <th>Aksi</th>
+            <th>Opsi</th>
+        </tr>
+        {% for data in result %}
+        <tr>
+
+       
+            <td>{{ data.1 }}</td>
+            <td>{{ data.2 }}</td>
+            <td>{{ data.3 }}</td>
+            <td>{{ data.4 }}</td>
+            <td>{{ data.5 }}</td>
+            <td>
+                <div class="btn-group">
+                    {% if data.1 == 'kepala' %}
+                    <a class="btn btn-primary" href="{{ url_for('tenggorokan') }}">Tenggorokan</a>
+                    {% endif %}
+                    {% if data.1 == 'tenggorokan' %}
+                    <a class="btn btn-primary" href="{{ url_for('kepala') }}">Kepala</a>
+                    <a class="btn btn-primary" href="{{ url_for('dada') }}">Dada</a>
+                    {% endif %}
+                    {% if data.1 == 'dada' %}
+                    <a class="btn btn-primary" href="{{ url_for('tenggorokan') }}">Tenggorokan</a>
+                    <a class="btn btn-primary" href="{{ url_for('perut') }}">Perut</a>
+                    {% endif %}
+                    {% if data.1 == 'perut' %}
+                    <a class="btn btn-primary" href="{{ url_for('dada') }}">Dada</a>
+                    <a class="btn btn-primary" href="{{ url_for('kemaluan') }}">Kemaluan</a>
+                    {% endif %}
+                    {% if data.1 == 'kemaluan' %}
+                    <a class="btn btn-primary" href="{{ url_for('perut') }}">Perut</a>
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="/hapus/{{ data.0 }}"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

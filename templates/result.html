@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hasil</title>
+</head>
+<body>
+    
+    <h1>Result</h1>
+    <table border="1px" width="300px">
+        {% for i in hasil.items(): %}
+        <tr>
+            <td>{{ i[0] }}</td>
+            <td align="center">{{ i[1] }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Diagnosa</h1>
+        <ul>
+            {% for j in hasil.items(): %}
+                {% if j[1] > 50 %}
+                     <li>{{ j[0] }}</li>
+                {% endif %}
+             {% endfor %}
+        </ul>
+    <h1>Solusi</h1>
+        {% for j in hasil.items(): %}
+            {% if j[1] > 50: %}
+                {% if j[0] == 'Kanker Mulut': %}
+                    <p>{{ 'a' }}</p>
+                {% endif %}
+                {% if j[0] == 'Kanker Tenggorokan': %}
+                    <p>{{ 'b' }}</p>
+                {% endif %}
+                {% if j[0] == 'Kanker Paru - Paru': %}
+                     <p>{{ 'c' }}</p>
+                {% endif %}
+                {% if j[0] == 'Kanker Payudara': %}
+                    <p>{{ 'd' }}</p>
+                {% endif %}
+                {% if j[0] == 'Kanker Kandung Kemih': %}
+                    <p>{{ 'e' }}</p>
+                {% endif %}
+                {% if j[0] == 'Stroke': %}
+                    <p>{{ 'f' }}</p>
+                {% endif %}
+                {% if j[0] == 'Bronkitis': %}
+                    <p>{{ 'g' }}</p>
+                {% endif %}
+                {% if j[0] == 'Impotensi': %}
+                    <p>{{ 'h' }}</p>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+</body>
+</html>

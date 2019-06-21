@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+{% block title %}| Tenggorokan{% endblock %}
+{% block content %}
+<h1><span><img src="{{ url_for('static', filename='img/Tenggorokan.png') }}" alt=""></span> Tenggorokan</h1>
+<form action="{{ url_for('cek_tenggorokan') }}" method="POST">
+    <table>
+        {% for i in range(0,6): %}
+        <tr>
+            <td>
+                <p>{{ result[i] }}</p>
+                <div class="slidecontainer">
+                    <input name="gejala{{ i }}" type="range" min="0" max="5" value="0" class="slider" id="myRange{{ i }}">
+                    <p>Nilai : <span id="demo{{ i }}"></span></p>
+                    <p>Seberapa Sakit : <span class="badge badge-pill" id="kri{{ i }}"></span></p>
+                </div>
+
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="fa fa-search"></i> Cek
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+        
+        let slider0 = document.getElementById("myRange0");
+        let output0 = document.getElementById("demo0");
+        let kri0 = document.getElementById("kri0");
+        
+        output0.innerHTML = slider0.value;
+        kri0.innerHTML = "Biasa aja";
+        kri0.classList.add("badge-primary");
+        slider0.oninput = function () {
+            output0.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri0.innerHTML = "Biasa aja";
+                kri0.classList.add("badge-primary");
+                kri0.classList.remove("badge-warning");
+                kri0.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri0.innerHTML = "Sakit Banget";
+                kri0.classList.add("badge-danger");
+                kri0.classList.remove("badge-primary");
+                kri0.classList.remove("badge-warning");
+            } else {
+                kri0.innerHTML = "Lumayan";
+                kri0.classList.add("badge-warning");
+                kri0.classList.remove("badge-primary");
+                kri0.classList.remove("badge-danger");
+            }
+        }
+
+        let slider1 = document.getElementById("myRange1");
+        let output1 = document.getElementById("demo1");
+        let kri1 = document.getElementById("kri1");
+        
+        output1.innerHTML = slider1.value;
+        kri1.innerHTML = "Biasa aja";
+        kri1.classList.add("badge-primary");
+        slider1.oninput = function () {
+            output1.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri1.innerHTML = "Biasa aja";
+                kri1.classList.add("badge-primary");
+                kri1.classList.remove("badge-warning");
+                kri1.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri1.innerHTML = "Sakit Banget";
+                kri1.classList.add("badge-danger");
+                kri1.classList.remove("badge-primary");
+                kri1.classList.remove("badge-warning");
+            } else {
+                kri1.innerHTML = "Lumayan";
+                kri1.classList.add("badge-warning");
+                kri1.classList.remove("badge-primary");
+                kri1.classList.remove("badge-danger");
+            }
+        }
+
+        let slider2 = document.getElementById("myRange2");
+        let output2 = document.getElementById("demo2");
+        let kri2 = document.getElementById("kri2");
+        
+        output2.innerHTML = slider2.value;
+        kri2.innerHTML = "Biasa aja";
+        kri2.classList.add("badge-primary");
+        slider2.oninput = function () {
+            output2.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri2.innerHTML = "Biasa aja";
+                kri2.classList.add("badge-primary");
+                kri2.classList.remove("badge-warning");
+                kri2.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri2.innerHTML = "Sakit Banget";
+                kri2.classList.add("badge-danger");
+                kri2.classList.remove("badge-primary");
+                kri2.classList.remove("badge-warning");
+            } else {
+                kri2.innerHTML = "Lumayan";
+                kri2.classList.add("badge-warning");
+                kri2.classList.remove("badge-primary");
+                kri2.classList.remove("badge-danger");
+            }
+        }
+
+        let slider3 = document.getElementById("myRange3");
+        let output3 = document.getElementById("demo3");
+        let kri3 = document.getElementById("kri3");
+        
+        output3.innerHTML = slider3.value;
+        kri3.innerHTML = "Biasa aja";
+        kri3.classList.add("badge-primary");
+        slider3.oninput = function () {
+            output3.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri3.innerHTML = "Biasa aja";
+                kri3.classList.add("badge-primary");
+                kri3.classList.remove("badge-warning");
+                kri3.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri3.innerHTML = "Sakit Banget";
+                kri3.classList.add("badge-danger");
+                kri3.classList.remove("badge-primary");
+                kri3.classList.remove("badge-warning");
+            } else {
+                kri3.innerHTML = "Lumayan";
+                kri3.classList.add("badge-warning");
+                kri3.classList.remove("badge-primary");
+                kri3.classList.remove("badge-danger");
+            }
+        }
+
+        let slider4 = document.getElementById("myRange4");
+        let output4 = document.getElementById("demo4");
+        let kri4 = document.getElementById("kri4");
+        
+        output4.innerHTML = slider4.value;
+        kri4.innerHTML = "Biasa aja";
+        kri4.classList.add("badge-primary");
+        slider4.oninput = function () {
+            output4.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri4.innerHTML = "Biasa aja";
+                kri4.classList.add("badge-primary");
+                kri4.classList.remove("badge-warning");
+                kri4.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri4.innerHTML = "Sakit Banget";
+                kri4.classList.add("badge-danger");
+                kri4.classList.remove("badge-primary");
+                kri4.classList.remove("badge-warning");
+            } else {
+                kri4.innerHTML = "Lumayan";
+                kri4.classList.add("badge-warning");
+                kri4.classList.remove("badge-primary");
+                kri4.classList.remove("badge-danger");
+            }
+        }
+
+        let slider5 = document.getElementById("myRange5");
+        let output5 = document.getElementById("demo5");
+        let kri5 = document.getElementById("kri5");
+        
+        output5.innerHTML = slider5.value;
+        kri5.innerHTML = "Biasa aja";
+        kri5.classList.add("badge-primary");
+        slider5.oninput = function () {
+            output5.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri5.innerHTML = "Biasa aja";
+                kri5.classList.add("badge-primary");
+                kri5.classList.remove("badge-warning");
+                kri5.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri5.innerHTML = "Sakit Banget";
+                kri5.classList.add("badge-danger");
+                kri5.classList.remove("badge-primary");
+                kri5.classList.remove("badge-warning");
+            } else {
+                kri5.innerHTML = "Lumayan";
+                kri5.classList.add("badge-warning");
+                kri5.classList.remove("badge-primary");
+                kri5.classList.remove("badge-danger");
+            }
+        }
+
+        let slider6 = document.getElementById("myRange6");
+        let output6 = document.getElementById("demo6");
+        let kri6 = document.getElementById("kri6");
+        
+        output6.innerHTML = slider6.value;
+        kri6.innerHTML = "Biasa aja";
+        kri6.classList.add("badge-primary");
+        slider6.oninput = function () {
+            output6.innerHTML = this.value;
+            
+            if(this.value < 2) {
+                kri6.innerHTML = "Biasa aja";
+                kri6.classList.add("badge-primary");
+                kri6.classList.remove("badge-warning");
+                kri6.classList.remove("badge-danger");
+            } else if(this.value > 3 ) {
+                kri6.innerHTML = "Sakit Banget";
+                kri6.classList.add("badge-danger");
+                kri6.classList.add("badge-primary");
+                kri6.classList.add("badge-warning");
+            } else {
+                kri6.innerHTML = "Lumayan";
+                kri6.classList.add("badge-warning");
+                kri6.classList.remove("badge-primary");
+                kri6.classList.remove("badge-danger");
+            }
+        }
+        
+    </script>
+{% endblock %}
